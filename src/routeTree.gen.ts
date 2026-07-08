@@ -14,9 +14,21 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
-import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patients'
+import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
+import { Route as DashboardMedicationRouteImport } from './routes/dashboard.medication'
+import { Route as DashboardMedicalReportsRouteImport } from './routes/dashboard.medical-reports'
+import { Route as DashboardEmergencyAlertsRouteImport } from './routes/dashboard.emergency-alerts'
+import { Route as DashboardDocumentsRouteImport } from './routes/dashboard.documents'
+import { Route as DashboardChatRouteImport } from './routes/dashboard.chat'
+import { Route as DashboardCareWorkersRouteImport } from './routes/dashboard.care-workers'
+import { Route as DashboardCarePlansRouteImport } from './routes/dashboard.care-plans'
+import { Route as DashboardCalendarRouteImport } from './routes/dashboard.calendar'
+import { Route as DashboardBillingRouteImport } from './routes/dashboard.billing'
 import { Route as DashboardAppointmentsRouteImport } from './routes/dashboard.appointments'
 import { Route as DashboardAnalyticsRouteImport } from './routes/dashboard.analytics'
+import { Route as DashboardAiAssistantRouteImport } from './routes/dashboard.ai-assistant'
+import { Route as DashboardPatientsIndexRouteImport } from './routes/dashboard.patients.index'
+import { Route as DashboardPatientsPatientIdRouteImport } from './routes/dashboard.patients.$patientId'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -43,9 +55,55 @@ const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardPatientsRoute = DashboardPatientsRouteImport.update({
-  id: '/patients',
-  path: '/patients',
+const DashboardProfileRoute = DashboardProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMedicationRoute = DashboardMedicationRouteImport.update({
+  id: '/medication',
+  path: '/medication',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardMedicalReportsRoute = DashboardMedicalReportsRouteImport.update({
+  id: '/medical-reports',
+  path: '/medical-reports',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardEmergencyAlertsRoute =
+  DashboardEmergencyAlertsRouteImport.update({
+    id: '/emergency-alerts',
+    path: '/emergency-alerts',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardDocumentsRoute = DashboardDocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardChatRoute = DashboardChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCareWorkersRoute = DashboardCareWorkersRouteImport.update({
+  id: '/care-workers',
+  path: '/care-workers',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCarePlansRoute = DashboardCarePlansRouteImport.update({
+  id: '/care-plans',
+  path: '/care-plans',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCalendarRoute = DashboardCalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardBillingRoute = DashboardBillingRouteImport.update({
+  id: '/billing',
+  path: '/billing',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardAppointmentsRoute = DashboardAppointmentsRouteImport.update({
@@ -58,36 +116,88 @@ const DashboardAnalyticsRoute = DashboardAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardAiAssistantRoute = DashboardAiAssistantRouteImport.update({
+  id: '/ai-assistant',
+  path: '/ai-assistant',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPatientsIndexRoute = DashboardPatientsIndexRouteImport.update({
+  id: '/patients/',
+  path: '/patients/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPatientsPatientIdRoute =
+  DashboardPatientsPatientIdRouteImport.update({
+    id: '/patients/$patientId',
+    path: '/patients/$patientId',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
+  '/dashboard/ai-assistant': typeof DashboardAiAssistantRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/appointments': typeof DashboardAppointmentsRoute
-  '/dashboard/patients': typeof DashboardPatientsRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
+  '/dashboard/calendar': typeof DashboardCalendarRoute
+  '/dashboard/care-plans': typeof DashboardCarePlansRoute
+  '/dashboard/care-workers': typeof DashboardCareWorkersRoute
+  '/dashboard/chat': typeof DashboardChatRoute
+  '/dashboard/documents': typeof DashboardDocumentsRoute
+  '/dashboard/emergency-alerts': typeof DashboardEmergencyAlertsRoute
+  '/dashboard/medical-reports': typeof DashboardMedicalReportsRoute
+  '/dashboard/medication': typeof DashboardMedicationRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/patients/$patientId': typeof DashboardPatientsPatientIdRoute
+  '/dashboard/patients/': typeof DashboardPatientsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/dashboard/ai-assistant': typeof DashboardAiAssistantRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/appointments': typeof DashboardAppointmentsRoute
-  '/dashboard/patients': typeof DashboardPatientsRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
+  '/dashboard/calendar': typeof DashboardCalendarRoute
+  '/dashboard/care-plans': typeof DashboardCarePlansRoute
+  '/dashboard/care-workers': typeof DashboardCareWorkersRoute
+  '/dashboard/chat': typeof DashboardChatRoute
+  '/dashboard/documents': typeof DashboardDocumentsRoute
+  '/dashboard/emergency-alerts': typeof DashboardEmergencyAlertsRoute
+  '/dashboard/medical-reports': typeof DashboardMedicalReportsRoute
+  '/dashboard/medication': typeof DashboardMedicationRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/dashboard/patients/$patientId': typeof DashboardPatientsPatientIdRoute
+  '/dashboard/patients': typeof DashboardPatientsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
+  '/dashboard/ai-assistant': typeof DashboardAiAssistantRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/appointments': typeof DashboardAppointmentsRoute
-  '/dashboard/patients': typeof DashboardPatientsRoute
+  '/dashboard/billing': typeof DashboardBillingRoute
+  '/dashboard/calendar': typeof DashboardCalendarRoute
+  '/dashboard/care-plans': typeof DashboardCarePlansRoute
+  '/dashboard/care-workers': typeof DashboardCareWorkersRoute
+  '/dashboard/chat': typeof DashboardChatRoute
+  '/dashboard/documents': typeof DashboardDocumentsRoute
+  '/dashboard/emergency-alerts': typeof DashboardEmergencyAlertsRoute
+  '/dashboard/medical-reports': typeof DashboardMedicalReportsRoute
+  '/dashboard/medication': typeof DashboardMedicationRoute
+  '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard/patients/$patientId': typeof DashboardPatientsPatientIdRoute
+  '/dashboard/patients/': typeof DashboardPatientsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -95,30 +205,66 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard'
     | '/login'
+    | '/dashboard/ai-assistant'
     | '/dashboard/analytics'
     | '/dashboard/appointments'
-    | '/dashboard/patients'
+    | '/dashboard/billing'
+    | '/dashboard/calendar'
+    | '/dashboard/care-plans'
+    | '/dashboard/care-workers'
+    | '/dashboard/chat'
+    | '/dashboard/documents'
+    | '/dashboard/emergency-alerts'
+    | '/dashboard/medical-reports'
+    | '/dashboard/medication'
+    | '/dashboard/profile'
     | '/dashboard/settings'
     | '/dashboard/'
+    | '/dashboard/patients/$patientId'
+    | '/dashboard/patients/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
+    | '/dashboard/ai-assistant'
     | '/dashboard/analytics'
     | '/dashboard/appointments'
-    | '/dashboard/patients'
+    | '/dashboard/billing'
+    | '/dashboard/calendar'
+    | '/dashboard/care-plans'
+    | '/dashboard/care-workers'
+    | '/dashboard/chat'
+    | '/dashboard/documents'
+    | '/dashboard/emergency-alerts'
+    | '/dashboard/medical-reports'
+    | '/dashboard/medication'
+    | '/dashboard/profile'
     | '/dashboard/settings'
     | '/dashboard'
+    | '/dashboard/patients/$patientId'
+    | '/dashboard/patients'
   id:
     | '__root__'
     | '/'
     | '/dashboard'
     | '/login'
+    | '/dashboard/ai-assistant'
     | '/dashboard/analytics'
     | '/dashboard/appointments'
-    | '/dashboard/patients'
+    | '/dashboard/billing'
+    | '/dashboard/calendar'
+    | '/dashboard/care-plans'
+    | '/dashboard/care-workers'
+    | '/dashboard/chat'
+    | '/dashboard/documents'
+    | '/dashboard/emergency-alerts'
+    | '/dashboard/medical-reports'
+    | '/dashboard/medication'
+    | '/dashboard/profile'
     | '/dashboard/settings'
     | '/dashboard/'
+    | '/dashboard/patients/$patientId'
+    | '/dashboard/patients/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -164,11 +310,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardSettingsRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/dashboard/patients': {
-      id: '/dashboard/patients'
-      path: '/patients'
-      fullPath: '/dashboard/patients'
-      preLoaderRoute: typeof DashboardPatientsRouteImport
+    '/dashboard/profile': {
+      id: '/dashboard/profile'
+      path: '/profile'
+      fullPath: '/dashboard/profile'
+      preLoaderRoute: typeof DashboardProfileRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/medication': {
+      id: '/dashboard/medication'
+      path: '/medication'
+      fullPath: '/dashboard/medication'
+      preLoaderRoute: typeof DashboardMedicationRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/medical-reports': {
+      id: '/dashboard/medical-reports'
+      path: '/medical-reports'
+      fullPath: '/dashboard/medical-reports'
+      preLoaderRoute: typeof DashboardMedicalReportsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/emergency-alerts': {
+      id: '/dashboard/emergency-alerts'
+      path: '/emergency-alerts'
+      fullPath: '/dashboard/emergency-alerts'
+      preLoaderRoute: typeof DashboardEmergencyAlertsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/documents': {
+      id: '/dashboard/documents'
+      path: '/documents'
+      fullPath: '/dashboard/documents'
+      preLoaderRoute: typeof DashboardDocumentsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/chat': {
+      id: '/dashboard/chat'
+      path: '/chat'
+      fullPath: '/dashboard/chat'
+      preLoaderRoute: typeof DashboardChatRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/care-workers': {
+      id: '/dashboard/care-workers'
+      path: '/care-workers'
+      fullPath: '/dashboard/care-workers'
+      preLoaderRoute: typeof DashboardCareWorkersRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/care-plans': {
+      id: '/dashboard/care-plans'
+      path: '/care-plans'
+      fullPath: '/dashboard/care-plans'
+      preLoaderRoute: typeof DashboardCarePlansRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/calendar': {
+      id: '/dashboard/calendar'
+      path: '/calendar'
+      fullPath: '/dashboard/calendar'
+      preLoaderRoute: typeof DashboardCalendarRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/billing': {
+      id: '/dashboard/billing'
+      path: '/billing'
+      fullPath: '/dashboard/billing'
+      preLoaderRoute: typeof DashboardBillingRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/appointments': {
@@ -185,23 +394,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardAnalyticsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/ai-assistant': {
+      id: '/dashboard/ai-assistant'
+      path: '/ai-assistant'
+      fullPath: '/dashboard/ai-assistant'
+      preLoaderRoute: typeof DashboardAiAssistantRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/patients/': {
+      id: '/dashboard/patients/'
+      path: '/patients'
+      fullPath: '/dashboard/patients/'
+      preLoaderRoute: typeof DashboardPatientsIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/patients/$patientId': {
+      id: '/dashboard/patients/$patientId'
+      path: '/patients/$patientId'
+      fullPath: '/dashboard/patients/$patientId'
+      preLoaderRoute: typeof DashboardPatientsPatientIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
 interface DashboardRouteChildren {
+  DashboardAiAssistantRoute: typeof DashboardAiAssistantRoute
   DashboardAnalyticsRoute: typeof DashboardAnalyticsRoute
   DashboardAppointmentsRoute: typeof DashboardAppointmentsRoute
-  DashboardPatientsRoute: typeof DashboardPatientsRoute
+  DashboardBillingRoute: typeof DashboardBillingRoute
+  DashboardCalendarRoute: typeof DashboardCalendarRoute
+  DashboardCarePlansRoute: typeof DashboardCarePlansRoute
+  DashboardCareWorkersRoute: typeof DashboardCareWorkersRoute
+  DashboardChatRoute: typeof DashboardChatRoute
+  DashboardDocumentsRoute: typeof DashboardDocumentsRoute
+  DashboardEmergencyAlertsRoute: typeof DashboardEmergencyAlertsRoute
+  DashboardMedicalReportsRoute: typeof DashboardMedicalReportsRoute
+  DashboardMedicationRoute: typeof DashboardMedicationRoute
+  DashboardProfileRoute: typeof DashboardProfileRoute
   DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardPatientsPatientIdRoute: typeof DashboardPatientsPatientIdRoute
+  DashboardPatientsIndexRoute: typeof DashboardPatientsIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardAiAssistantRoute: DashboardAiAssistantRoute,
   DashboardAnalyticsRoute: DashboardAnalyticsRoute,
   DashboardAppointmentsRoute: DashboardAppointmentsRoute,
-  DashboardPatientsRoute: DashboardPatientsRoute,
+  DashboardBillingRoute: DashboardBillingRoute,
+  DashboardCalendarRoute: DashboardCalendarRoute,
+  DashboardCarePlansRoute: DashboardCarePlansRoute,
+  DashboardCareWorkersRoute: DashboardCareWorkersRoute,
+  DashboardChatRoute: DashboardChatRoute,
+  DashboardDocumentsRoute: DashboardDocumentsRoute,
+  DashboardEmergencyAlertsRoute: DashboardEmergencyAlertsRoute,
+  DashboardMedicalReportsRoute: DashboardMedicalReportsRoute,
+  DashboardMedicationRoute: DashboardMedicationRoute,
+  DashboardProfileRoute: DashboardProfileRoute,
   DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardPatientsPatientIdRoute: DashboardPatientsPatientIdRoute,
+  DashboardPatientsIndexRoute: DashboardPatientsIndexRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
@@ -216,3 +470,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

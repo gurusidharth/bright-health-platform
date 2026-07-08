@@ -3,7 +3,7 @@ import {
   Activity, Brain, Calendar, Pill, Bell, MessageSquare, FileText, TrendingUp,
   Shield, Radio, BarChart3, Users, Heart, Stethoscope, Building2, HomeIcon,
   Hospital, Check, ArrowRight, Sparkles, Menu, X, Star, ChevronDown,
-  Twitter, Linkedin, Github, Mail, ShieldCheck, Zap, Clock, HeartPulse,
+  Twitter, Linkedin, Github, Mail, ShieldCheck, Zap, Clock, HeartPulse, Quote,
 } from "lucide-react";
 import dashboardHero from "@/assets/dashboard-hero.jpg";
 import { Button } from "@/components/ui/button";
@@ -198,9 +198,9 @@ function Hero() {
             </span>
             New — GPT-powered clinical summarisation is live
           </div>
-          <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
-            Transforming Health &<br />
-            Social Care with{" "}
+          <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-5xl xl:text-6xl">
+            Transforming Health & Social Care with<br /> 
+            {" "}
             <span className="text-gradient">Artificial Intelligence</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
@@ -313,26 +313,26 @@ function SectionHeader({ eyebrow, title, desc }: { eyebrow: string; title: strin
 
 function Features() {
   return (
-    <section id="features" className="relative py-24 lg:py-32">
+    <section id="features" className="relative py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Features"
           title="A complete AI operating system for care"
           desc="Twelve integrated modules replacing spreadsheets, WhatsApp groups and paper charts — with an AI co-pilot at the centre of every workflow."
         />
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f, i) => (
             <div
               key={f.title}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated"
               style={{ animationDelay: `${i * 40}ms` }}
             >
               <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-primary opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20" />
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary text-white shadow-glow">
+              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary text-white shadow-glow transition-transform duration-300 group-hover:scale-110">
                 <f.icon className="h-5 w-5" strokeWidth={2} />
               </div>
               <h3 className="mt-5 text-lg font-semibold tracking-tight text-foreground">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
             </div>
           ))}
         </div>
@@ -343,20 +343,21 @@ function Features() {
 
 function HowItWorks() {
   return (
-    <section id="solutions" className="relative overflow-hidden bg-gradient-hero py-24 lg:py-32">
+    <section id="solutions" className="relative overflow-hidden bg-gradient-hero py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="How it works"
           title="From onboarding to outcomes in 5 steps"
           desc="Most organisations are live within 2–4 weeks. Here is what your first month with MedixCare looks like."
         />
-        <div className="mt-16 grid gap-4 lg:grid-cols-5">
+        <div className="relative mt-12 grid gap-4 lg:grid-cols-5">
+          <div aria-hidden className="absolute inset-x-0 top-[2.85rem] hidden h-px bg-border lg:block" />
           {steps.map((s, i) => (
-            <div key={s.n} className="relative">
-              <div className="glass shadow-card h-full rounded-2xl p-6">
+            <div key={s.n} className="group relative">
+              <div className="glass shadow-card h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
                 <div className="flex items-center justify-between">
                   <span className="text-3xl font-bold text-gradient">{s.n}</span>
-                  <div className="grid h-9 w-9 place-items-center rounded-full bg-gradient-primary text-white text-xs font-bold shadow-glow">
+                  <div className="relative z-10 grid h-9 w-9 place-items-center rounded-full bg-gradient-primary text-white text-xs font-bold shadow-glow">
                     {i + 1}
                   </div>
                 </div>
@@ -382,9 +383,9 @@ function AIShowcase() {
     "When is the next medication?",
   ];
   return (
-    <section id="ai" className="relative py-24 lg:py-32">
+    <section id="ai" className="relative py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
+        <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
           <div>
             <div className="inline-flex rounded-full border border-border bg-accent px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent-foreground">
               AI Assistant
@@ -482,31 +483,36 @@ function AIShowcase() {
 
 function DashboardPreview() {
   const stats = [
-    { label: "Active Patients", value: "1,284", trend: "+12.4%" },
-    { label: "Appointments Today", value: "312", trend: "+3.1%" },
-    { label: "Care Plans Generated", value: "486", trend: "+28%" },
-    { label: "Open Alerts", value: "7", trend: "-4" },
+    { icon: Users, label: "Active Patients", value: "1,284", trend: "+12.4%" },
+    { icon: Calendar, label: "Appointments Today", value: "312", trend: "+3.1%" },
+    { icon: Sparkles, label: "Care Plans Generated", value: "486", trend: "+28%" },
+    { icon: Bell, label: "Open Alerts", value: "7", trend: "-4", negative: true },
   ];
   return (
-    <section className="relative overflow-hidden bg-gradient-hero py-24 lg:py-32">
+    <section className="relative overflow-hidden bg-gradient-hero py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4">
         <SectionHeader
           eyebrow="Dashboard"
           title="Every metric that matters, in one glance"
           desc="From ward-level KPIs to organisation-wide outcomes — MedixCare surfaces the signal, not the noise."
         />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="glass shadow-card rounded-2xl p-5">
-              <div className="text-sm text-muted-foreground">{s.label}</div>
-              <div className="mt-2 flex items-baseline gap-2">
+            <div key={s.label} className="glass shadow-card rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
+              <div className="flex items-center justify-between">
+                <div className="text-sm text-muted-foreground">{s.label}</div>
+                <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary">
+                  <s.icon className="h-4 w-4" />
+                </div>
+              </div>
+              <div className="mt-3 flex items-baseline gap-2">
                 <div className="text-3xl font-bold tracking-tight">{s.value}</div>
-                <div className="text-xs font-semibold text-emerald-600">{s.trend}</div>
+                <div className={`text-xs font-semibold ${s.negative ? "text-rose-600" : "text-emerald-600"}`}>{s.trend}</div>
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-8 rounded-3xl bg-gradient-primary p-1.5 shadow-elevated">
+        <div className="mt-6 rounded-3xl bg-gradient-primary p-1.5 shadow-elevated">
           <div className="overflow-hidden rounded-[1.35rem] bg-white">
             <img src={dashboardHero} alt="MedixCare full dashboard" loading="lazy" width={1408} height={1008} className="h-auto w-full" />
           </div>
@@ -766,7 +772,7 @@ export default function Landing() {
         <Features />
         <HowItWorks />
         <AIShowcase />
-        <DashboardPreview />
+        {/* <DashboardPreview /> */}
         <Benefits />
         <Testimonials />
         <Pricing />
