@@ -8,6 +8,7 @@ import {
 import dashboardHero from "@/assets/dashboard-hero.jpg";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Link } from "@tanstack/react-router";
 
 const nav = [
   { label: "Home", href: "#home" },
@@ -127,9 +128,13 @@ function Nav() {
             ))}
           </nav>
           <div className="hidden items-center gap-2 lg:flex">
-            <Button variant="ghost" size="sm">Login</Button>
-            <Button size="sm" className="bg-gradient-primary text-white shadow-glow hover:opacity-95">
-              Get Started <ArrowRight className="ml-1 h-4 w-4" />
+            <Button variant="ghost" size="sm" asChild>
+              <Link to="/login">Login</Link>
+            </Button>
+            <Button size="sm" asChild className="bg-gradient-primary text-white shadow-glow hover:opacity-95">
+              <Link to="/login">
+                Get Started <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
           </div>
           <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="menu">
@@ -145,8 +150,12 @@ function Nav() {
                 </a>
               ))}
               <div className="mt-2 flex gap-2 border-t border-border pt-3">
-                <Button variant="ghost" size="sm" className="flex-1">Login</Button>
-                <Button size="sm" className="flex-1 bg-gradient-primary text-white">Get Started</Button>
+                <Button variant="ghost" size="sm" className="flex-1" asChild>
+                  <Link to="/login">Login</Link>
+                </Button>
+                <Button size="sm" className="flex-1 bg-gradient-primary text-white" asChild>
+                  <Link to="/login">Get Started</Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -198,8 +207,10 @@ function Hero() {
             Empower healthcare providers, care workers, and organisations with AI-driven care planning, patient management, predictive analytics, and real-time collaboration.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button size="lg" className="bg-gradient-primary text-white shadow-glow hover:opacity-95">
-              Get Started <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" asChild className="bg-gradient-primary text-white shadow-glow hover:opacity-95">
+              <Link to="/login">
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
             <Button size="lg" variant="outline" className="border-border bg-white/60 backdrop-blur">
               Book a Demo
