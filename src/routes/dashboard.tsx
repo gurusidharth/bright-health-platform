@@ -11,13 +11,20 @@ export const Route = createFileRoute("/dashboard")({
   component: DashboardLayout,
 });
 
-const nav = [
+type NavItem = {
+  to: "/dashboard" | "/dashboard/patients" | "/dashboard/appointments" | "/dashboard/analytics" | "/dashboard/settings";
+  label: string;
+  icon: typeof LayoutDashboard;
+  exact?: boolean;
+};
+
+const nav: NavItem[] = [
   { to: "/dashboard", label: "Overview", icon: LayoutDashboard, exact: true },
   { to: "/dashboard/patients", label: "Patients", icon: Users },
   { to: "/dashboard/appointments", label: "Appointments", icon: Calendar },
   { to: "/dashboard/analytics", label: "Analytics", icon: BarChart3 },
   { to: "/dashboard/settings", label: "Settings", icon: Settings },
-] as const;
+];
 
 function DashboardLayout() {
   const { user, ready, logout } = useAuth();
